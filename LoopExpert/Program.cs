@@ -4,7 +4,29 @@ class Program
 {
     static void Main(string[] args)
     {
-        //Call methods here
+        IsPassing(80);
+        
+        var myGrade = GetGradeClassification(95);
+        Console.WriteLine(myGrade);
+        
+        ViewItemsInListWithForEachLoop();
+        
+        ViewItemsInListWithForLoop();
+
+        IsEggsInList();
+        
+        ViewMenuItems();
+
+        var userChoice = UserChoiceFromMenu();
+        Console.WriteLine(userChoice);
+
+        var count = CountIngredients();
+        Console.WriteLine(count);
+
+        var isIt = IsItemInList("vanilla");
+        Console.WriteLine(isIt);
+        
+        PrintListInReverse();
     }
 
     // 1. TODO: Complete the method to determine if a grade is passing.
@@ -12,8 +34,10 @@ class Program
     // Example: If the grade is 75, the method should return true. If the grade is 65, the method should return false.
     // After completing the method, call it in the Main method with different grade values to test its functionality.
     static bool IsPassing(int grade)
-    {
-        // your code here
+    { 
+        var answer = grade >= 70 ? true : false;
+        Console.WriteLine(answer);
+        return answer;
     }
     
     // 2. TODO: Complete the method to return a grade classification as "A", "B", or "C" based on the grade.
@@ -23,7 +47,12 @@ class Program
     // After completing the method, call it in the Main method with different grade values to test its functionality.
     static string GetGradeClassification(int grade)
     {
-        // your code here
+        if (grade >= 90) {return "A";} 
+        else if (grade >=70) {return "B";}
+        else
+        {
+            return "C";
+        }
     }
 
 
@@ -39,7 +68,10 @@ class Program
     static void ViewItemsInListWithForEachLoop()
     {
         List<string> ingredientList = new List<string>() { "flour", "sugar", "eggs", "butter", "milk", "vanilla" };
-        // your code here
+        foreach (var ingredient in ingredientList)
+        {
+            Console.WriteLine(ingredient);
+        }
     }
 
     // 4. TODO: Complete the method to print out all items in the list using a for loop.
@@ -54,7 +86,10 @@ class Program
     static void ViewItemsInListWithForLoop()
     {
         List<string> ingredientList = new List<string>() { "flour", "sugar", "eggs", "butter", "milk", "vanilla" };
-        // your code here
+        for (int i = 0; i < ingredientList.Count; i++)
+        {
+            Console.WriteLine(ingredientList[i]);
+        }
     }
 
     // 5. TODO: Complete the method to check if "eggs" is in the list.
@@ -63,7 +98,9 @@ class Program
     static bool IsEggsInList()
     {
         List<string> ingredientList = new List<string>() { "flour", "sugar", "eggs", "butter", "milk", "vanilla" };
-        // your code here
+        var answer = ingredientList.Contains("eggs") ? true : false;
+        Console.WriteLine(answer);
+        return answer;
     }
 
     // 6. TODO: Create a method that displays a menu with three items.
@@ -74,7 +111,16 @@ class Program
     // 3. Spaghetti Bolognese
     static void ViewMenuItems()
     {
-        // your code here
+        List<string> menu = new List<string>() { "Carbonara", "Cacio e Pepe", "Penne Alla Vodka" };
+        Console.WriteLine("Hello, welcome to Facciamo il Chilo!");
+        Thread.Sleep(1000);
+        Console.WriteLine("Today our menu consists of: ");
+        int num = 1;
+        foreach (var item in menu)
+        {
+            Console.WriteLine($"{num}. {item}");
+            num++;
+        }
     }
 
     // 7. TODO: Complete the method to prompt the user to choose an item from the menu.
@@ -83,7 +129,24 @@ class Program
     // Example: If the user selects "1", the method should return "1".
     static string UserChoiceFromMenu()
     {
-        // your code here
+        Console.WriteLine("What would you like to order?");
+        var choice = Console.ReadLine();
+        if (choice == "1" || choice.ToLower() == "carbonara")
+        {
+            return "Ok, we will have that Carbonara out to you soon!";
+        }
+        else if (choice == "2" || choice.ToLower() == "cacico e pepe")
+        {
+            return "Great choice! We will have the Cacio e Pepe out shortly!";
+        }
+        else if (choice == "3" || choice.ToLower() == "penne alla vodka")
+        {
+            return "You will love the Penne Alla Vodka! We will bring it out shortly!";
+        }
+        else
+        {
+            return "Sorry we don't have that on the menu...";
+        }
     }
 
     // 8. TODO: Complete the method to count the number of ingredients in the list.
@@ -92,7 +155,7 @@ class Program
     static int CountIngredients()
     {
         List<string> ingredientList = new List<string>() { "flour", "sugar", "eggs", "butter", "milk", "vanilla" };
-        // your code here
+        return ingredientList.Count;
     }
 
     // 9. TODO: Complete the method to check if a specific item is in the list.
@@ -101,7 +164,7 @@ class Program
     static bool IsItemInList(string itemName)
     {
         List<string> ingredientList = new List<string>() { "flour", "sugar", "eggs", "butter", "milk", "vanilla" };
-        // your code here
+        return ingredientList.Contains(itemName) ? true : false;
     }
 
     // 10. TODO: Complete the method to print out all items in the list in reverse order.
@@ -116,7 +179,10 @@ class Program
     static void PrintListInReverse()
     {
         List<string> ingredientList = new List<string>() { "flour", "sugar", "eggs", "butter", "milk", "vanilla" };
-        // your code here
+        for (int i = ingredientList.Count-1; i >= 0; i--)
+        {
+            Console.WriteLine(ingredientList[i]);
+        }
     }
 
     // 11. BONUS -- TODO: Complete the method to check if the list contains "eggs", "flour", and "butter".
@@ -127,6 +193,11 @@ class Program
     static bool HasEggsAndFlourAndButter()
     {
         List<string> ingredientList = new List<string>() { "flour", "sugar", "eggs", "butter", "milk", "vanilla" };
-        // your code here
+        if (ingredientList.Contains("eggs") && ingredientList.Contains("flour") && ingredientList.Contains("butter"))
+        {
+            Console.WriteLine("True");
+        }
+
+        return true;
     }
 }

@@ -135,7 +135,7 @@ class Program
         {
             return "Ok, we will have that Carbonara out to you soon!";
         }
-        else if (choice == "2" || choice.ToLower() == "cacico e pepe")
+        else if (choice == "2" || choice.ToLower() == "cacio e pepe")
         {
             return "Great choice! We will have the Cacio e Pepe out shortly!";
         }
